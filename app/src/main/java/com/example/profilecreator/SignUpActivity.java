@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -64,11 +66,35 @@ public class SignUpActivity extends AppCompatActivity {
 
 
     public Boolean validatePassWord1(String password1) {
-        if(password1.equals("123")){
-            return true;
-        }else{
-            return false;
+        List<String> errorList = new ArrayList<String>();
+        Pattern specailCharPatten = Pattern.compile("[^a-z0-9 ]", Pattern.CASE_INSENSITIVE);
+        Pattern UpperCasePatten = Pattern.compile("[A-Z ]");
+        Pattern lowerCasePatten = Pattern.compile("[a-z ]");
+        Pattern digitCasePatten = Pattern.compile("[0-9 ]");
+        errorList.clear();
+
+        boolean flag=true;
+
+
+        if (password1.length() < 8) {
+            errorList.add("Password lenght must have alleast 8 character !!");
+            flag=false;
         }
+
+        if (!UpperCasePatten.matcher(password1).find()) {
+            errorList.add("Password must have atleast one uppercase character !!");
+            flag=false;
+        }
+        if (!lowerCasePatten.matcher(password1).find()) {
+            errorList.add("Password must have atleast one lowercase character !!");
+            flag=false;
+        }
+        if (!digitCasePatten.matcher(password1).find()) {
+            errorList.add("Password must have atleast one digit character !!");
+            flag=false;
+        }
+
+        return flag;
     }
 
     public Boolean validateEmail(String email_address) {
