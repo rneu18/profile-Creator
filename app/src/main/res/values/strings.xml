@@ -1,10 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Profile Creator</string>
-    <?xml version="1.0" encoding="utf-8"?>
 
-    <string
-        name="passport_instructions"
-        >The text should have minimum of 8 characters and contain at least one number, one uppercase and one lowercase letter. You can use special characters.
+
+    <string name="passport_instructions">The text should have minimum of 8 characters and contain at least one number, one uppercase and one lowercase letter. You can use special characters.
 
     </string>
     <string name="email_hint">app.mail@app.com</string>

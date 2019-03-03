@@ -51,7 +51,9 @@
             android:background="@android:color/black"
 
             android:gravity="left"
-            app:srcCompat="@drawable/greenFlag" />
+            app:srcCompat="@drawable/green_flag"/>
+
+
 
 
     </android.support.v7.widget.LinearLayoutCompat>
