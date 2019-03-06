@@ -3,8 +3,12 @@ package com.example.profilecreator;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class DataBaseHelper extends SQLiteOpenHelper {
@@ -62,6 +66,36 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         db.insert(TABLE_NAME, null, contentValues);
 
 
+    }
+    public List<String> readDataFromDB(){
+        SQLiteDatabase database = this.getReadableDatabase(); //this is a long operation
+        String[] projection = {U_ID, USER_ID, USER_NAME, EMAIL, B_DATE, COUNTRY}; //specify the columns to search data
+        String selection = "User = ?";
+        String[] arguments = {"YOUR NAME"};
+        Cursor cursor = database.query(
+                TABLE_NAME, //table name
+                projection, // columns
+                null, //where statements
+                arguments,
+                null, //if we need to group
+                null, // group filter
+                null //order
+        );
+
+        List<String> ListUsers = new ArrayList<>();
+        while (cursor.moveToNext()){
+            String userName = cursor.getString(
+                    cursor.getColumnIndexOrThrow(USER_NAME));
+            ListUsers.add(userName);
+
+        }
+
+
+
+        //SQL query
+        //SELECT ID, USER FORM TABLE_NAME
+        //WHERE ID = "2 of USER = "YOUR_NAME"
+        return ListUsers;
     }
 
 

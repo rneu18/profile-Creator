@@ -10,6 +10,8 @@ import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.List;
 
+import static java.sql.DriverManager.println;
+
 public class ProfileGrid extends AppCompatActivity {
 
     DataBaseHelper helper;
@@ -22,6 +24,8 @@ public class ProfileGrid extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_grid);
+        helper = new DataBaseHelper(ProfileGrid.this);
+        List<String> list = helper.readDataFromDB();
 
         lvItems = (ListView) findViewById(R.id.user_container);
         //creating array of todo items
@@ -29,6 +33,10 @@ public class ProfileGrid extends AppCompatActivity {
         itemsAdapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1, items);
         lvItems.setAdapter(itemsAdapter);
+        itemsAdapter.add(list.toString());
+
+
+
         onAddItem();
 
     }
@@ -47,35 +55,7 @@ public class ProfileGrid extends AppCompatActivity {
         itemsAdapter.add(etNewItem);
 
     }
-    public List<String> readDataFromDB(){
-        SQLiteDatabase database = helper.getReadableDatabase(); //this is a long operation
-        String[] projection = {"ID", "USER"}; //specify the columns to search data
-        String selection = "User = ?";
-        String[] arguments = {"YOUR NAME"};
-        Cursor cursor = database.query(
-                "USER", //table name
-                projection, // columns
-                selection, //where statements
-                arguments,
-                null, //if we need to group
-                null, // group filter
-                null //order
-        );
-
-        List<String> ListUsers = new ArrayList<>();
-        while (cursor.moveToNext()){
-            String userName = cursor.getString(
-                    cursor.getColumnIndexOrThrow("User"));
-            ListUsers.add(userName);
-
-        }
 
 
-
-        //SQL query
-        //SELECT ID, USER FORM TABLE_NAME
-        //WHERE ID = "2 of USER = "YOUR_NAME"
-        return ListUsers;
-    }
 }
 
