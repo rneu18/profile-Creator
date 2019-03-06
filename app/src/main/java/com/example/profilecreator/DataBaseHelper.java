@@ -56,7 +56,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     }
 
-    public void insertData (String name, String userName, String email, String country ){
+    public void insertData (String userName, String name, String email, String country ){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(USER_ID, userName);
@@ -76,7 +76,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 TABLE_NAME, //table name
                 projection, // columns
                 null, //where statements
-                arguments,
+                null,
                 null, //if we need to group
                 null, // group filter
                 null //order
