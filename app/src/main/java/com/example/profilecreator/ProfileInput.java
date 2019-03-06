@@ -1,7 +1,9 @@
 package com.example.profilecreator;
 
 import android.app.DatePickerDialog;
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
@@ -12,12 +14,15 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Calendar;
 
-public class ProfileInput<CountryCodePicker> extends AppCompatActivity {
+import static android.widget.Toast.LENGTH_SHORT;
 
+public class ProfileInput extends AppCompatActivity {
 
+    DataBaseHelper myDB;
     Button selectDate;
     Button button;
     TextView date;
@@ -26,20 +31,17 @@ public class ProfileInput<CountryCodePicker> extends AppCompatActivity {
     int month;
     int dayOfMonth;
     Calendar calendar;
-
-
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_input);
+        myDB = new DataBaseHelper(ProfileInput.this);
+
 
         //Previous password retrieve
 
 
-        Button selectDate = findViewById(R.id.input_user_bd);
+        selectDate = findViewById(R.id.input_user_bd);
         date = findViewById(R.id.input_user_age);
         EditText pass_wd = (EditText) findViewById(R.id.input_user_password);
 //        pass_wd.setText(first_password);
@@ -59,17 +61,28 @@ public class ProfileInput<CountryCodePicker> extends AppCompatActivity {
                 EditText person_name = (EditText) findViewById(R.id.input_person_name);
                 final String full_name = person_name.getText().toString();
                 EditText user_name = (EditText) findViewById(R.id.input_user_name);
-                final String user_id = person_name.getText().toString();
-                TextView birthday = (TextView) findViewById(R.id.input_user_bd);
-                final String brthday = birthday.getText().toString();
+                final String user_id = user_name.getText().toString();
+
+                String brthday = date.toString();
                 EditText country1 = (EditText) findViewById(R.id.input_user_country);
                 final String country = country1.getText().toString();
                 EditText address1 = (EditText) findViewById(R.id.input_user_address);
                 final String address = address1.getText().toString();
 
+                if(my_password.equals(pass_str)
+                        && full_name.length() >= 1
+//                        && brthday.length() >= 1
+                        && country.length() >= 1
+                        && user_id.length() >= 1){
 
+                    try{
+                        myDB.insertData(user_id, full_name, my_email, country);
+                    }catch(NullPointerException e){
+                        Toast.makeText(ProfileInput.this,
+                                "SOMETHING WRONG", Toast.LENGTH_SHORT).show();
 
-                if(my_password.equals(pass_str)){
+                    }
+
                     Intent intent = new Intent(ProfileInput.this, ProfileGrid.class);
                     Bundle bundle = new Bundle();
                     bundle.putString("Name", full_name);
@@ -77,15 +90,14 @@ public class ProfileInput<CountryCodePicker> extends AppCompatActivity {
                     bundle.putString("userId", user_id);
                     bundle.putString("birth_date", brthday);
                     bundle.putString("country", country);
+                    bundle.putString("Address", address);
                     intent.putExtras(bundle);
                     startActivity(intent);
                 }else {
                     TextView alert = (TextView) findViewById(R.id.alert);
-                    alert.setText("Wrong Password!!!");
+                    alert.setText("Check your entries!!!");
                 }
-
             }
-
         });
 
         selectDate.setOnClickListener(new View.OnClickListener() {
@@ -100,7 +112,7 @@ public class ProfileInput<CountryCodePicker> extends AppCompatActivity {
                         new DatePickerDialog.OnDateSetListener() {
                             @Override
                             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
-                                date.setText(day + "/" + (month + 1) + "/" + year);
+                                date.setText(day + "-" + (month + 1) + "-" + year);
                             }
                         }, year, month, dayOfMonth);
                 datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis());
@@ -108,4 +120,7 @@ public class ProfileInput<CountryCodePicker> extends AppCompatActivity {
             }
         });
     }
+
+
+
 }
