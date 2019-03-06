@@ -1,5 +1,4 @@
 package com.example.profilecreator;
-
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -7,9 +6,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
-import java.util.ArrayList;
-import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -23,6 +19,9 @@ public class SignUpActivity extends AppCompatActivity {
         setContentView(R.layout.activity_sign_up);
         addListenerOnButton();
     }
+
+
+
     public void addListenerOnButton() {
 
         final Context context = this;
@@ -46,6 +45,11 @@ public class SignUpActivity extends AppCompatActivity {
                 if((email_true == true) && (password_t1 == true) && (password_t2 == true)){
 
                     Intent intent = new Intent(SignUpActivity.this, ProfileInput.class);
+
+                    Bundle bundle = new Bundle();
+                    bundle.putString("password", password1);
+                    bundle.putString("email", email_address);
+                    intent.putExtras(bundle);
                     startActivity(intent);
                 }else {
                     Intent intent = new Intent(SignUpActivity.this, SignUpActivity.class);
@@ -55,6 +59,8 @@ public class SignUpActivity extends AppCompatActivity {
 
         });
     }
+
+
 
     public Boolean validatePassWord2(String password2, String password1) {
         if(password2.equals(password1)){
@@ -66,31 +72,25 @@ public class SignUpActivity extends AppCompatActivity {
 
 
     public Boolean validatePassWord1(String password1) {
-        List<String> errorList = new ArrayList<String>();
-        Pattern specailCharPatten = Pattern.compile("[^a-z0-9 ]", Pattern.CASE_INSENSITIVE);
         Pattern UpperCasePatten = Pattern.compile("[A-Z ]");
         Pattern lowerCasePatten = Pattern.compile("[a-z ]");
         Pattern digitCasePatten = Pattern.compile("[0-9 ]");
-        errorList.clear();
+
 
         boolean flag=true;
 
 
         if (password1.length() < 8) {
-            errorList.add("Password lenght must have alleast 8 character !!");
             flag=false;
         }
 
         if (!UpperCasePatten.matcher(password1).find()) {
-            errorList.add("Password must have atleast one uppercase character !!");
             flag=false;
         }
         if (!lowerCasePatten.matcher(password1).find()) {
-            errorList.add("Password must have atleast one lowercase character !!");
             flag=false;
         }
         if (!digitCasePatten.matcher(password1).find()) {
-            errorList.add("Password must have atleast one digit character !!");
             flag=false;
         }
 

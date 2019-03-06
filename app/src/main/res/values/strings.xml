@@ -3,10 +3,24 @@
     <string name="app_name">Profile Creator</string>
 
 
-    <string name="passport_instructions">The text should have minimum of 8 characters and contain at least one number, one uppercase and one lowercase letter. You can use special characters.
+    <string name="passport_instructions">Your password should have minimum of 8 characters and contain at least one number, one uppercase and one lowercase letter. You can use special characters.
 
     </string>
     <string name="email_hint">app.mail@app.com</string>
     <string name="password_hint">********</string>
+    <string name="gender">Gender</string>
+    <string name="tick_mark">✔</string>
+    <string name="create_account">Create an account</string>
+    <string name="email">Email Address</string>
+    <string name="password">Create Password</string>
+    <string name="repeat_password">Repeat Password</string>
+    <string name="green_flag">GreenFlag</string>
+    <string name="n_m_w">No Matter What</string>
+    <string name="first_desc">GreenFlag customers can create an account to access</string>
+    <string name="first_li_1">Car health updates</string>
+    <string name="first_li_2">Request a rescue online</string>
+    <string name="first_li_3">Policy information</string>
+    <string name="name1">Name</string>
+    <string name="next">NEXT</string>
 
 </resources>

@@ -4,14 +4,13 @@
     android:layout_height="fill_parent"
     android:fitsSystemWindows="true"
     android:background="#000000">
-
-
-
         <android.support.v7.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginTop="40dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
             android:orientation="vertical">
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -26,7 +25,9 @@
                         android:id="@+id/input_person_name"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Name"
+                        android:padding="5dp"
+                        android:layout_marginTop="5dp"
+                        android:hint="@string/name1"
                         android:textColorHint="@android:color/black"
                         android:inputType="textPersonName"
                         android:textColor="@android:color/black"
@@ -38,6 +39,8 @@
                         android:id="@+id/input_user_name"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:padding="5dp"
+                        android:layout_marginTop="5dp"
                         android:hint="Username"
                         android:textColorHint="@android:color/black"
                         android:inputType="text"
@@ -49,6 +52,8 @@
                         android:id="@+id/input_user_password"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:padding="5dp"
+                        android:layout_marginTop="5dp"
                         android:hint="Password"
                         android:textColorHint="@android:color/black"
                         android:inputType="textPassword"
@@ -60,12 +65,16 @@
                         android:id="@+id/btn_change_pic"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:padding="5dp"
+                        android:layout_marginTop="5dp"
                         android:background="@android:color/holo_green_dark"
-                        android:text="Change Photo" />
+                        android:text="Change Photo"/>
                     <TextView
                         android:id="@+id/input_user_age"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:padding="5dp"
+                        android:layout_marginTop="5dp"
                         android:hint="Date of Birth"
                         android:textColorHint="@android:color/black"
                         android:inputType="date"
@@ -77,18 +86,111 @@
                         android:id="@+id/input_user_bd"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
                         android:hint="Chose Birth Date"
                         android:textColorHint="@android:color/black"
+                        android:textColor="@android:color/black"
+                        android:background="@android:color/holo_green_dark"
+                        android:textSize="30dp"
+                        />
+                    <EditText
+                        android:id="@+id/input_user_country"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="5dp"
+                        android:layout_marginTop="5dp"
+                        android:hint="Your country"
+                        android:textColorHint="@android:color/black"
+                        android:inputType="text"
                         android:textColor="@android:color/black"
                         android:background="@drawable/background_white"
                         android:textSize="32dp"
                         />
 
+                    <RadioGroup
+                        android:id="@+id/radioGrp"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingTop="10dp"
+                        android:paddingLeft="8dp"
+                        android:padding="5dp"
+                        android:layout_marginTop="5dp"
+                        >
+                        <TextView
+                            android:id="@+id/header"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/gender"
+                            android:textColor="@android:color/white"
+                            android:textSize="32dp"
+                            />
+                        <RadioButton
+                            android:id="@+id/radioM"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:checked="false"
+                            android:buttonTint="@android:color/white"
+                            android:layout_weight="1"
+                            android:textSize="26dp"
+                            android:text="Male"
+                            android:textColor="@android:color/white"
+                            />
+                        <!--android:drawableRight=""-->
+                        <RadioButton
+                            android:id="@+id/radioF"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:checked="false"
+                            android:buttonTint="@android:color/white"
+                            android:layout_weight="1"
+                            android:textSize="26dp"
+                            android:text="Female"
+                            android:textColor="@android:color/white"
+                            />
+                        <RadioButton
+                            android:id="@+id/radioNF"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:checked="true"
+                            android:buttonTint="@android:color/white"
+                            android:layout_weight="1"
+                            android:textSize="26dp"
+                            android:text="Not specified"
+                            android:textColor="@android:color/white"
+                            />
+                    </RadioGroup>
+
                 </android.support.v7.widget.LinearLayoutCompat>
 
-                <ImageView
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content" />
+                <LinearLayout
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="100dp"
+                        android:src="@drawable/pic1"
+                        android:padding="10dp"
+                        />
+                    <TextView
+                        android:id="@+id/alert"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="5dp"
+                        android:layout_marginTop="5dp"
+                        android:inputType="date"
+                        android:textColor="@android:color/holo_red_dark"
+
+                        android:textSize="12dp"
+                        />
+
+
+                </LinearLayout>
 
 
 
@@ -97,20 +199,41 @@
             <android.support.v7.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="horizontal"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="50dp"
+                >
 
+                <EditText
+                    android:id="@+id/input_user_address"
+                    android:layout_width="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:padding="5dp"
+                    android:layout_height="wrap_content"
+                    android:minHeight="53dp"
+                    android:layout_weight="1"
+                    android:hint="Postal Address (Opt)"
+                    android:textColorHint="@android:color/black"
+                    android:inputType="text"
+                    android:textColor="@android:color/black"
+                    android:background="@drawable/background_white"
+                    android:textSize="24dp"
+                    />
 
-
+                <Button
+                    android:id="@+id/savebtn"
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@android:color/holo_green_dark"
+                    android:hint="Save"
+                    android:textColor="@android:color/black"
+                    android:textColorHint="@android:color/black"
+                    android:textSize="32dp" />
 
             </android.support.v7.widget.LinearLayoutCompat>
 
         </android.support.v7.widget.LinearLayoutCompat>
-
-
-
-
-
-
-
 
 </ScrollView>

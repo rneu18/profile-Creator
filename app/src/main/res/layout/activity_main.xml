@@ -26,7 +26,7 @@
                 android:layout_height="match_parent"
                 android:background="#000000"
                 android:gravity="left"
-                android:text="GreenFlag"
+                android:text="@string/green_flag"
                 android:textColor="@android:color/white"
                 android:textSize="40sp"
                 android:textStyle="bold"></TextView>
@@ -37,7 +37,7 @@
                 android:layout_height="match_parent"
                 android:background="#000000"
                 android:gravity="left"
-                android:text="No Matter What"
+                android:text="@string/n_m_w"
                 android:textColor="@android:color/holo_green_dark"
                 android:textSize="18sp"
                 android:textStyle="bold"></TextView>
@@ -49,7 +49,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@android:color/black"
-
             android:gravity="left"
             app:srcCompat="@drawable/green_flag"/>
 
@@ -73,7 +72,7 @@
             android:layout_height="wrap_content"
             android:background="#000000"
             android:gravity="left"
-            android:text="GreenFlag customers can create an account to access"
+            android:text="@string/first_desc"
             android:textColor="@android:color/white"
             android:textSize="24sp"></TextView>
         <android.support.v7.widget.LinearLayoutCompat
@@ -87,14 +86,14 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="✔"
+                    android:text="@string/tick_mark"
                     android:textColor="@android:color/holo_green_dark"
                     android:layout_marginRight="10dp"
                     />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Car health updates"
+                    android:text="@string/first_li_1"
                     android:textColor="@android:color/white" />
 
 
@@ -106,7 +105,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="✔"
+                    android:text="@string/tick_mark"
                     android:textColor="@android:color/holo_green_dark"
                     android:layout_marginRight="10dp"
                     />
@@ -114,7 +113,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Request a rescue online"
+                    android:text="@string/first_li_2"
                     android:textColor="@android:color/white" />
 
 
@@ -125,7 +124,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="✔"
+                    android:text="@string/tick_mark"
                     android:textColor="@android:color/holo_green_dark"
                     android:layout_marginRight="10dp"
                     />
@@ -133,7 +132,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Policy information"
+                    android:text="@string/first_li_3"
                     android:textColor="@android:color/white" />
 
 
@@ -155,7 +154,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@android:color/holo_green_dark"
-            android:text="Create an account" />
+            android:text="@string/create_account" />
 
     </android.support.v7.widget.LinearLayoutCompat>
 
